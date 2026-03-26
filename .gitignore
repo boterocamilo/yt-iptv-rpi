@@ -1,0 +1,10 @@
+# Local config — contains your Pi's IP, never commit this
+.env
+
+# Docker runtime data
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

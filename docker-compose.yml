@@ -1,0 +1,30 @@
+services:
+
+  yt-iptv:
+    build:
+      context: ./yt-iptv
+    container_name: yt-iptv
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - yt-iptv-data:/data          # persists channels.json across restarts
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PROXY_BASE_URL=http://${RPI_IP}:5000
+
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - jellyfin-config:/config
+      - jellyfin-cache:/cache
+    environment:
+      - JELLYFIN_PublishedServerUrl=http://${RPI_IP}:8096
+
+volumes:
+  yt-iptv-data:
+  jellyfin-config:
+  jellyfin-cache:
