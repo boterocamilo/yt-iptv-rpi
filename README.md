@@ -35,7 +35,7 @@ sudo systemctl enable docker
 ### 2. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/yt-iptv-rpi.git
+git clone https://github.com/boterocamilo/yt-iptv-rpi.git
 cd yt-iptv-rpi
 ```
 
